@@ -22,15 +22,16 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 
-# USAGE: 
-# b - list all bookmarks
-# b bookmarkname - jumps to the that bookmark
-# b b[TAB] - tab completion is available
-# bs bookmarkname - saves the curr dir as bookmarkname
-# bp bookmarkname - prints the bookmark
-# bp b[TAB] - tab completion is available
-# bd bookmarkname - deletes the bookmark
-# bd [TAB] - tab completion is available
+### USAGE: 
+###
+### b - list all bookmarks
+### b bookmarkname - jumps to the that bookmark
+### b b[TAB] - tab completion is available
+### bs bookmarkname - saves the curr dir as bookmarkname
+### bp bookmarkname - prints the bookmark
+### bp b[TAB] - tab completion is available
+### bd bookmarkname - deletes the bookmark
+### bd [TAB] - tab completion is available
 
 # setup file to store bookmarks
 if [ ! -n "$SDIRS" ]; then
