@@ -46,7 +46,7 @@ function bs {
     check_help $1
     naming="$1"
     if [ -z "$naming" ]; then 
-        naming=${PWD//\//-}
+        naming=${PWD##*/}
     fi
     _bookmark_name_valid "$naming"
     if [ -z "$exit_message" ]; then
