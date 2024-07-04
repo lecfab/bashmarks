@@ -34,4 +34,4 @@ All of your directory bookmarks are saved in a file called ".sdirs" in your HOME
 
 * [Huy Nguyen](https://github.com/huyng)
 * [Karthick Gururaj](https://github.com/karthick-gururaj)
-* to bookmark files, check [huyng's fork](https://github.com/huyng/bashmarks/compare/master...friday-james:bashmarks:master)
+* to bookmark files, check [friday-james's fork](https://github.com/huyng/bashmarks/compare/master...friday-james:bashmarks:master)
