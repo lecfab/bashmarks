@@ -22,6 +22,6 @@ install:
 	@echo ''
 	@echo 'USAGE:'
 	@echo '------'
-	b --help
+	cat bashmarks.sh | grep "###"
 
 .PHONY: all install
