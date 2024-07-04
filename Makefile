@@ -3,19 +3,25 @@ INSTALL_DIR=~/.local/bin
 all:
 	@echo "Please run 'make install'"
 
+uninstall:
+	@echo ""
+	rm $(INSTALL_DIR)/bashmarks.sh
+	@echo ""
+	@echo 'Successfully uninstalled bashmarks.sh'
+
 install:
 	@echo ""
 	mkdir -p $(INSTALL_DIR)
 	cp bashmarks.sh $(INSTALL_DIR)
+	@echo "source $(INSTALL_DIR)/bashmarks.sh"  >> ~/.bashrc
+	@echo "source $(INSTALL_DIR)/bashmarks.sh"  >> ~/.bash_profile
+	@echo "Added to .bashrc and .profile"
+	source $(INSTALL_DIR)/bashmarks.sh
+	@echo "Bashmarks loaded "
 	@echo ""
-	@echo "Please add 'source $(INSTALL_DIR)/bashmarks.sh' to your .bashrc file"
 	@echo ''
 	@echo 'USAGE:'
 	@echo '------'
-	@echo 's <bookmark_name> - Saves the current directory as "bookmark_name"'
-	@echo 'g <bookmark_name> - Goes (cd) to the directory associated with "bookmark_name"'
-	@echo 'p <bookmark_name> - Prints the directory associated with "bookmark_name"'
-	@echo 'd <bookmark_name> - Deletes the bookmark'
-	@echo 'l                 - Lists all available bookmarks'
+	b --help
 
 .PHONY: all install
