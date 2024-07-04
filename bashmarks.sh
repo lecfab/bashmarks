@@ -23,14 +23,14 @@
 
 
 # USAGE: 
+# b - list all bookmarks
+# b bookmarkname - jumps to the that bookmark
+# b b[TAB] - tab completion is available
 # bs bookmarkname - saves the curr dir as bookmarkname
-# bg bookmarkname - jumps to the that bookmark
-# bg b[TAB] - tab completion is available
 # bp bookmarkname - prints the bookmark
 # bp b[TAB] - tab completion is available
 # bd bookmarkname - deletes the bookmark
 # bd [TAB] - tab completion is available
-# b - list all bookmarks
 
 # setup file to store bookmarks
 if [ ! -n "$SDIRS" ]; then
@@ -53,14 +53,15 @@ function bs {
 }
 
 # jump to bookmark
-function bg {
+function b {
     check_help $1
     source $SDIRS
     target="$(eval $(echo echo $(echo \$DIR_$1)))"
     if [ -d "$target" ]; then
         cd "$target"
-    elif [ ! -n "$target" ]; then
-        echo -e "\033[${RED}WARNING: '${1}' bashmark does not exist\033[00m"
+    elif [ ! -n "$target" ]; then # no argument given
+        #echo -e "\033[${RED}WARNING: '${1}' bashmark2 does not exist\033[00m"
+        bb
     else
         echo -e "\033[${RED}WARNING: '${target}' does not exist\033[00m"
     fi
@@ -87,17 +88,17 @@ function bd {
 function check_help {
     if [ "$1" = "-h" ] || [ "$1" = "-help" ] || [ "$1" = "--help" ] ; then
         echo ''
+        echo 'b                 - Lists all available bookmarks'
+        echo 'b  <bookmark_name> - Goes (cd) to the directory associated with "bookmark_name"'
         echo 'bs <bookmark_name> - Saves the current directory as "bookmark_name"'
-        echo 'bg <bookmark_name> - Goes (cd) to the directory associated with "bookmark_name"'
         echo 'bp <bookmark_name> - Prints the directory associated with "bookmark_name"'
         echo 'bd <bookmark_name> - Deletes the bookmark'
-        echo 'b                 - Lists all available bookmarks'
         kill -SIGINT $$
     fi
 }
 
 # list bookmarks with dirnam
-function b {
+function bb {
     check_help $1
     source $SDIRS
         
@@ -156,14 +157,14 @@ function _purge_line {
     fi
 }
 
-# bind completion command for bg,bp,bd to _comp
+# bind completion command for b,bp,bd to _comp
 if [ $ZSH_VERSION ]; then
-    compctl -K _compzsh bg
+    compctl -K _compzsh b
     compctl -K _compzsh bp
     compctl -K _compzsh bd
 else
     shopt -s progcomp
-    complete -F _comp bg
+    complete -F _comp b
     complete -F _comp bp
     complete -F _comp bd
 fi
