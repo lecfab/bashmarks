@@ -19,9 +19,6 @@ install:
 	source $(INSTALL_DIR)/bashmarks.sh
 	@echo "Bashmarks loaded "
 	@echo ""
-	@echo ''
-	@echo 'USAGE:'
-	@echo '------'
 	cat bashmarks.sh | grep "###"
 
 .PHONY: all install
